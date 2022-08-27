@@ -18,6 +18,19 @@ public class Student {
     private String student_password; 
     @Column(nullable = false, length = 45)
     private int student_course;
+
+    
+    
+    public Student() {
+    }
+
+    public Student(String student_name, String student_address,int student_course, String student_email, String student_password) {
+        this.student_name = student_name;
+        this.student_address = student_address;
+        this.student_email = student_email;
+        this.student_password = student_password;
+        this.student_course = student_course;
+    }
     
     public int getStudent_id() {
         return student_id;
