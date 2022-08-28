@@ -119,14 +119,14 @@
 </head>
 <body>
     <div class="login-form">
-        <form>
+        <form action="#" th:action="@{/admin_login}" th:object="${admin}" method="post">
           <h1>Admin Login</h1>
           <div class="content">
             <div class="input-field">
-              <input type="email" placeholder="Email" autocomplete="nope">
+              <input type="email" placeholder="Email" autocomplete="nope" th:field="*{admin_email}">
             </div>
             <div class="input-field">
-              <input type="password" placeholder="Password" autocomplete="new-password">
+              <input type="password" placeholder="Password" autocomplete="new-password" th:field="*{admin_password}">
             </div>
           </div>
           <div class="action">

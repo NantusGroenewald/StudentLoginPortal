@@ -1,8 +1,6 @@
 package com.nantus.loginportal;
 
-import org.hibernate.loader.entity.NaturalIdEntityJoinWalker;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,26 +13,22 @@ public class LoginportalController {
 
 	@Autowired
 	private StudentRepository studentRepository; 
+
+	@Autowired
+	private AdminRepository adminRepository;
 	
 	@GetMapping("/student_login")
 	public String studentLoginForm(Model model) {
 		model.addAttribute("student", new Student());
 		return "student_login";
 	}
-
-	@GetMapping("/display_students")
-	public @ResponseBody Iterable<Student> getAllStudents(){
-		return studentRepository.findAll();
-	}
-
+	
 	@PostMapping("/student_login")
 	public String studentLoginSubmit(@ModelAttribute Student student, Model model) {
 		model.addAttribute("student", student); 
 		Iterable<Student> storedStudents = studentRepository.findAll();
-		System.out.println(student.getStudent_email() + " " + student.getStudent_password());
 		boolean loggedIn = false;
 		for (Student savedStudent : storedStudents) {
-			System.out.println(savedStudent.getStudent_email() + " " + savedStudent.getStudent_password());
 			if (student.getStudent_email().equals(savedStudent.getStudent_email()) && student.getStudent_password().equals(savedStudent.getStudent_password())) {
 				loggedIn = true;
                 break; 
@@ -42,7 +36,6 @@ public class LoginportalController {
 				loggedIn = false;
 			} 
 		}
-		System.out.println(loggedIn);
 		if (loggedIn) {
 			return "login_successful";
 		} else{
@@ -62,11 +55,41 @@ public class LoginportalController {
 		model.addAttribute("student", new Student()); 
 		return "student_login";
 	}
+
+	
 	@GetMapping("/admin_login")
-	public String adminLogin() {
+	public String adminLoginForm(Model model) {
+		model.addAttribute("admin", new Admin());
 		return "admin_login";
 	}
 
-
+	@PostMapping("/admin_login")
+	public String adminLoginSubmit(@ModelAttribute Admin admin, Model model) {
+		model.addAttribute("admin", admin); 
+		Iterable<Admin> storedAdmin = adminRepository.findAll();
+		boolean loggedIn = false;
+		for (Admin savedAdmin : storedAdmin) {
+			if (admin.getAdmin_email().equals(savedAdmin.getAdmin_email()) && admin.getAdmin_password().equals(savedAdmin.getAdmin_password())) {
+				loggedIn = true;
+                break; 
+			} else {
+				loggedIn = false;
+			} 
+		}
+		if (loggedIn) {
+			return "admin_successful";
+		} else{
+			return "admin_login";
+		}
+	}
 	
+	@GetMapping("/display_admin")
+	public @ResponseBody Iterable<Admin> getAllAdmin(){
+		return adminRepository.findAll();
+	}
+
+	@GetMapping("/display_students")
+	public @ResponseBody Iterable<Student> getAllStudents(){
+		return studentRepository.findAll();
+	}
 }

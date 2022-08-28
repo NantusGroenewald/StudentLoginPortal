@@ -2,17 +2,17 @@ package com.nantus.loginportal;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="administrator")
+@Table(name ="Administrator")
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int admin_id; 
     @Column(nullable = false, length = 45)
     private String admin_name; 
-    @Column(nullable = false, length = 45, unique = true)
-    private String admin_email; 
     @Column(nullable = false, length = 64)
     private String admin_password;
+    @Column(nullable = false, length = 45, unique = true)
+    private String admin_email; 
     
     public Admin() {
     }
@@ -54,6 +54,4 @@ public class Admin {
     public void setAdmin_password(String admin_password) {
         this.admin_password = admin_password;
     } 
-
-    
 }
