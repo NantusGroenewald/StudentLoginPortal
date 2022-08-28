@@ -3,7 +3,7 @@ package com.nantus.loginportal;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="Student")
+@Table(name ="student")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
