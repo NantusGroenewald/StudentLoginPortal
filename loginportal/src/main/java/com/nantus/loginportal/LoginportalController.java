@@ -31,17 +31,21 @@ public class LoginportalController {
 	public String studentLoginSubmit(@ModelAttribute Student student, Model model) {
 		model.addAttribute("student", student); 
 		Iterable<Student> storedStudents = studentRepository.findAll();
+		System.out.println(student.getStudent_email() + " " + student.getStudent_password());
 		boolean loggedIn = false;
 		for (Student savedStudent : storedStudents) {
-			if (student.getStudent_email() == savedStudent.getStudent_email() && student.getStudent_password() == savedStudent.getStudent_password()) {
+			System.out.println(savedStudent.getStudent_email() + " " + savedStudent.getStudent_password());
+			if (student.getStudent_email().equals(savedStudent.getStudent_email()) && student.getStudent_password().equals(savedStudent.getStudent_password())) {
 				loggedIn = true;
                 break; 
 			} else {
 				loggedIn = false;
 			} 
-			if (loggedIn) {
-				return "login_successful";
-			} 
+		}
+		System.out.println(loggedIn);
+		if (loggedIn) {
+			return "login_successful";
+		} else{
 			return "student_login";
 		}
 	}
