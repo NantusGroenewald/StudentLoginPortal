@@ -29,7 +29,7 @@ public class CRUDController {
     public String studentDelete(@ModelAttribute Integer id, Model model) {
         try {
             studentRepository.deleteById(id);
-            return "Deleted";
+            return "redirect:/admin_opperations";
         } catch (Exception er) {
             return er.getMessage();
         }
@@ -49,6 +49,6 @@ public class CRUDController {
     public String saveStudent(@ModelAttribute("student") Student student) {
         studentRepository.save(student);
 
-        return "redirect:/";
+        return "redirect:/admin_opperations";
     }
 }
