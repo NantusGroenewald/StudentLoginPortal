@@ -25,8 +25,8 @@ public class CRUDController {
     @Autowired
     private StudentRepository studentRepository;
 
-    @DeleteMapping("/student_delete/{id}")
-    public String studentDelete(@ModelAttribute Integer id, Model model) {
+    @RequestMapping("/student_delete")
+    public String deleteProduct(@RequestParam int id) {
         try {
             studentRepository.deleteById(id);
             return "redirect:/admin_opperations";
