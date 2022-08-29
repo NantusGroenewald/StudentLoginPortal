@@ -81,8 +81,8 @@
                 <td th:text="${student.student_password}">Password</td>
                 <td th:text="${student.student_course}">Course</td>
              <td>
-                    <button class="rowButtons"><a class="buttonlink" th:href="@{/student_edit(${student.student_id})}"></a>Edit</button>
-                   <button class="rowButtons"><a class="buttonlink" th:href="@{/student_delete(${student.student_id})}"></a>Delete</button>
+                    <button class="rowButtons"><a class="buttonlink" th:href="@{/student_edit/(id=${student.student_id})}"></a>Edit</button>
+                   <button class="rowButtons"><a class="buttonlink" th:href="@{/student_delete/(id=${student.student_id})}"></a>Delete</button>
                 </td> 
             </tr>
         </tbody>
