@@ -1,5 +1,10 @@
 package com.nantus.loginportal;
 
+import java.io.Console;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,12 +82,25 @@ public class LoginportalController {
 			} 
 		}
 		if (loggedIn) {
-			return "admin_successful";
+			Iterable<Student> intermediate = studentRepository.findAll();
+			List<Student> studentList = new ArrayList<Student>();
+			intermediate.forEach(studentList::add);
+			model.addAttribute("studentList", studentList);
+			return "admin_opperations";
 		} else{
 			return "admin_login";
 		}
 	}
-	
+	@GetMapping("/admin_opperations")
+    public String studentDisplay(Model model) {
+        Iterable<Student> intermediate = studentRepository.findAll();
+        List<Student> studentList = new ArrayList<Student>();
+        intermediate.forEach(studentList::add);
+		System.out.println("ttest");
+        model.addAttribute("studentList", studentList);
+        return "admin_opperations";
+    }
+
 	@GetMapping("/display_admin")
 	public @ResponseBody Iterable<Admin> getAllAdmin(){
 		return adminRepository.findAll();
