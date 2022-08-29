@@ -33,11 +33,11 @@ public class CRUDController {
         }
     }
 
-    @RequestMapping("/edit_student/{id}")
-    public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
+    @RequestMapping("/student_edit/{id}")
+    public ModelAndView showEditProductPage(@PathVariable(name = "student.student_id") int id) {
         ModelAndView mav = new ModelAndView("edit_student");
-        Student product = studentRepository.findById(id).get();
-        mav.addObject("product", product);
+        Student student = studentRepository.findById(id).get();
+        mav.addObject("product", student);
 
         return mav;
     }

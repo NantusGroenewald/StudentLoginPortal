@@ -3,11 +3,63 @@
 <head> 
     <title>Login Success</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+                body {
+            background: #c51e32;
+            font-family: 'Rubik', sans-serif;
+            position: relative;
+
+        }
+
+        .container {
+            background-color: antiquewhite;
+            width: 30%;
+            height: 50vh;
+            margin: auto;
+            top: 50%;
+            transform: translateY(50%);
+            display: grid;
+            position: relative;
+            text-align: center;
+        }
+
+        a {
+            width: 100%;
+            text-decoration: none;
+            font-size: large;
+            color: white;
+            height: 100%;
+            display: table-caption;
+        }
+
+        p {
+            position: relative;
+            bottom: 50%;
+        }
+
+        button {
+            position: relative;
+            background-color: #2d3b55;
+            box-shadow: none;
+            color: white;
+            border: none;
+            height: 141%;
+            bottom: 42%;
+            margin: -1% 0 7px 0%;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+    </style>
+    </style>
 </head>
 <body>
+    <div class="container">
 	<h1>Result</h1>
     <p th:text="'emial: ' + ${student.student_email}" />
     <p th:text="'password: ' + ${student.student_password}" />
-    <a href="/">Back to home</a>
+    <button><a href="/">Back to home</a></button>
+</div>
 </body>
 </html>

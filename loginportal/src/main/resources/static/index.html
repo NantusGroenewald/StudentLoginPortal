@@ -1,15 +1,71 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head> 
-    <title>Getting Started: Serving Web Content</title> 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <title>Student Management Application</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            background: #c51e32;
+            font-family: 'Rubik', sans-serif;
+            position: relative;
+
+        }
+
+        .container {
+            background-color: antiquewhite;
+            width: 30%;
+            height: 50vh;
+            margin: auto;
+            top: 50%;
+            transform: translateY(50%);
+            display: grid;
+            position: relative;
+            text-align: center;
+        }
+
+        a {
+            width: 100%;
+            text-decoration: none;
+            font-size: large;
+            color: white;
+            height: 100%;
+            display: table-caption;
+        }
+
+        p {
+            position: relative;
+            bottom: 50%;
+        }
+
+        button {
+            position: relative;
+            background-color: #2d3b55;
+            box-shadow: none;
+            color: white;
+            border: none;
+            height: 141%;
+            bottom: 42%;
+            margin: -1% 0 7px 0%;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>PORTAL APPLICATION</h1>
     <div class="container">
-        <a href="/student_login">Student Login</a>
-        <a href="/student_register">Student Register</a>
-        <a href="/admin_login">Admin Login</a>
+        <h1>PORTAL APPLICATION</h1>
+        <p>Nantus Groenewald & Xillon Fick <br> PRG 381 Project</p>
+        <button><a href="/student_login">Student Login</a></button>
+        <br>
+        <button><a href="/student_register">Student Register</a></button>
+        <br>
+        <button><a href="/admin_login">Admin Login</a></button>
     </div>
 </body>
+
 </html>
